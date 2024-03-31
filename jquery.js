@@ -62,9 +62,7 @@ $(document).ready(function () {
   $(document).on("keydown", function (e) {
     if (e.ctrlKey && (e.keyCode == 83 || e.keyCode == 85)) {
       // Ctrl + S or Ctrl + U was pressed
-      alert(
-        "Sorry, taking screenshots or viewing page source is not allowed on this website."
-      );
+     
       return false;
     }
   });
