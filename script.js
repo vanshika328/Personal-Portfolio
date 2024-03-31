@@ -25,7 +25,7 @@ window.addEventListener("scroll", function() {
 
 // Typed.js typing effect
 var typingEffect = new Typed(".typedText", {
-  strings: ["Designer", "Developer"],
+  strings: ["Developer", "Artist"],
   loop: true,
   typeSpeed: 100,
   backSpeed: 80,
