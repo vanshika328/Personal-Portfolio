@@ -75,12 +75,4 @@ $(document).ready(function () {
     alert("Sorry, right-click context menu is disabled on this website.");
   });
 });
-$(document).ready(function () {
-  $(window).on("touchstart", function (e) {
-    if (e.originalEvent.touches.length > 1) {
-      // Multiple fingers touch detected, possibly indicating a pinch gesture for screenshot
-      alert("Sorry, taking screenshots is not allowed on this website.");
-      return false;
-    }
-  });
-});
+
