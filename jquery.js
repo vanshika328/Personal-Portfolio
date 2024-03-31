@@ -58,19 +58,5 @@ $(document).ready(function () {
     $(this).css("background-color", "pink");
   });
 });
-$(document).ready(function () {
-  $(document).on("keydown", function (e) {
-    if (e.ctrlKey && (e.keyCode == 83 || e.keyCode == 85)) {
-      // Ctrl + S or Ctrl + U was pressed
-     
-      return false;
-    }
-  });
 
-  $(document).on("contextmenu", function (e) {
-    // Prevent right-click context menu
-    e.preventDefault();
-    alert("Sorry, right-click context menu is disabled on this website.");
-  });
-});
 
