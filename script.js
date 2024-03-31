@@ -108,50 +108,5 @@ document.getElementById("hireMeButton").addEventListener("click", function() {
 });
 
 
-// Function to detect screenshot attempt
-function detectScreenshot() {
-  // Listen for screenshot events
-  document.addEventListener('cut', screenshotDetected);
-  document.addEventListener('copy', screenshotDetected);
-  document.addEventListener('paste', screenshotDetected);
-}
 
-let lastTime = 0;
-let lastDelta = 0;
 
-// Function to detect screenshot attempt on mobile devices
-function detectScreenshotMobile(event) {
-    let currentTime = new Date().getTime();
-    let timeDiff = currentTime - lastTime;
-    
-    if (timeDiff < 100) {
-        let delta = Math.abs(event.rotationRate.alpha + event.rotationRate.beta + event.rotationRate.gamma - lastDelta);
-        if (delta > 15) {
-            // Show alert message
-            alert("Screenshots are not allowed on this website!");
-        }
-    }
-
-    lastTime = currentTime;
-    lastDelta = event.rotationRate.alpha + event.rotationRate.beta + event.rotationRate.gamma;
-}
-
-// Function to detect screenshot attempt on desktops/laptops
-function detectScreenshotDesktop(event) {
-    // Show alert message
-    alert("Screenshots are not allowed on this website!");
-}
-
-// Function to detect screenshot attempt
-function detectScreenshot() {
-    if ('ondevicemotion' in window) {
-        // Listen for devicemotion events on mobile devices
-        window.addEventListener('devicemotion', detectScreenshotMobile);
-    } else {
-        // Listen for keyup events on desktops/laptops
-        document.addEventListener('keyup', detectScreenshotDesktop);
-    }
-}
-
-// Call the function when the page loads
-window.onload = detectScreenshot;
