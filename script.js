@@ -107,29 +107,40 @@ document.getElementById("hireMeButton").addEventListener("click", function() {
   window.location.href = "mailto:your.email@example.com";
 });
 
-// Function to show alert when attempting to take a screenshot
-function alertOnScreenshot() {
-    var lastWidth = window.innerWidth;
-    var lastHeight = window.innerHeight;
 
-    function checkScreenshot() {
-        if (window.innerWidth != lastWidth || window.innerHeight != lastHeight) {
-           
-            alert("You can't take a screenshot. Only one attempt allowed.");
-            // Restore previous window size
-            window.resizeTo(lastWidth, lastHeight);
-        }
- 
-        lastWidth = window.innerWidth;
-        lastHeight = window.innerHeight;
-    }
-
-    // Check for window size changes periodically
-    setInterval(checkScreenshot, 1000); 
+// Function to detect screenshot attempt
+function detectScreenshot() {
+  // Listen for screenshot events
+  document.addEventListener('cut', screenshotDetected);
+  document.addEventListener('copy', screenshotDetected);
+  document.addEventListener('paste', screenshotDetected);
 }
 
+let lastTime = 0;
+let lastDelta = 0;
 
-alertOnScreenshot();
+// Function to detect screenshot attempt on mobile devices
+function detectScreenshotMobile(event) {
+    let currentTime = new Date().getTime();
+    let timeDiff = currentTime - lastTime;
+    
+    if (timeDiff < 100) {
+        let delta = Math.abs(event.rotationRate.alpha + event.rotationRate.beta + event.rotationRate.gamma - lastDelta);
+        if (delta > 15) {
+            // Show alert message
+            alert("Screenshots are not allowed on this website!");
+        }
+    }
+
+    lastTime = currentTime;
+    lastDelta = event.rotationRate.alpha + event.rotationRate.beta + event.rotationRate.gamma;
+}
+
+// Function to detect screenshot attempt on desktops/laptops
+function detectScreenshotDesktop(event) {
+    // Show alert message
+    alert("Screenshots are not allowed on this website!");
+}
 
 
 
