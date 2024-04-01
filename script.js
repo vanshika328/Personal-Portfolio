@@ -109,15 +109,28 @@ document.getElementById("hireMeButton").addEventListener("click", function() {
 
 // Function to show alert when attempting to take a screenshot
 function alertOnScreenshot() {
-    window.addEventListener('beforeunload', function (event) {
-        const warningMessage = "You can't take a screenshot. Only one attempt allowed.";
-        event.returnValue = warningMessage;
-        return warningMessage;
-    });
+    var lastWidth = window.innerWidth;
+    var lastHeight = window.innerHeight;
+
+    function checkScreenshot() {
+        if (window.innerWidth != lastWidth || window.innerHeight != lastHeight) {
+           
+            alert("You can't take a screenshot. Only one attempt allowed.");
+            // Restore previous window size
+            window.resizeTo(lastWidth, lastHeight);
+        }
+ 
+        lastWidth = window.innerWidth;
+        lastHeight = window.innerHeight;
+    }
+
+    // Check for window size changes periodically
+    setInterval(checkScreenshot, 1000); 
 }
 
 
 alertOnScreenshot();
+
 
 
 
