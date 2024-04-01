@@ -107,6 +107,18 @@ document.getElementById("hireMeButton").addEventListener("click", function() {
   window.location.href = "mailto:your.email@example.com";
 });
 
+// Function to show alert when attempting to take a screenshot
+function alertOnScreenshot() {
+    window.addEventListener('beforeunload', function (event) {
+        const warningMessage = "You can't take a screenshot. Only one attempt allowed.";
+        event.returnValue = warningMessage;
+        return warningMessage;
+    });
+}
+
+
+alertOnScreenshot();
+
 
 
 
