@@ -1,6 +1,6 @@
 <?php
 if(isset($_SERVER['save'])) {
-    $to = "Vanshikag462@gmail.com";
+    $to = "";
     $subject = "Form"; 
     $email = $_SERVER['email']; 
     $message = $_SERVER['message']; 
