@@ -90,15 +90,15 @@ function handleDownloadButtonClick(cvFileName) {
 
 // Add event listeners to the download buttons
 document.getElementById("downloadButton").addEventListener("click", function() {
-  handleDownloadButtonClick("Vanshika.CV (8).pdf");
+  handleDownloadButtonClick("");
 });
 
 document.getElementById("featureddownloadButton").addEventListener("click", function() {
-  handleDownloadButtonClick("Vanshika.CV (8).pdf");
+  handleDownloadButtonClick("");
 });
 
 document.getElementById("aboutCVButton").addEventListener("click", function() {
-  handleDownloadButtonClick("Vanshika.CV (8).pdf");
+  handleDownloadButtonClick("");
 });
 
 
