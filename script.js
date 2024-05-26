@@ -82,7 +82,7 @@ window.addEventListener('scroll', scrollActive);
 function handleDownloadButtonClick(cvFileName) {
   let downloadLink = document.createElement("a");
   downloadLink.href = cvFileName;
-  downloadLink.setAttribute("download", cvFileName);
+  downloadLink.setAttribute("", cvFileName);
   document.body.appendChild(downloadLink);
   downloadLink.click();
   document.body.removeChild(downloadLink);
@@ -104,7 +104,7 @@ document.getElementById("aboutCVButton").addEventListener("click", function() {
 
 // Hire Me button functionality
 document.getElementById("hireMeButton").addEventListener("click", function() {
-  window.location.href = "mailto:your.email@example.com";
+  window.location.href = "mailto:happy123@gmail.com";
 });
 
 
